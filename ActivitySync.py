@@ -123,7 +123,7 @@ def syncData(username, password, garmin_email = None, garmin_password = None):
             if type == 2:  # garmin
                 rid     = sync_item['activityId']
                 rid = str(rid)
-                print("sync rid:" + rid)
+                print("sync rid:" + rid + "_" + sync_item["startTimeLocal"])
                 res = garth.download(
                     f"/download-service/files/activity/{rid}",
                 )
