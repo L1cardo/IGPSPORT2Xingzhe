@@ -105,12 +105,14 @@ def syncData(username, password, garmin_email = None, garmin_password = None):
 
         need_sync = True
 
-        for item in data:
-            if item["start_time"] == mk_time:
-                need_sync = False
-                break
+        # for item in data:
+        #     if item["start_time"] == mk_time:
+        #         need_sync = False
+        #         break
         if need_sync:
             sync_data.append(activity)
+
+        print(datetime.strptime(activity["startTimeLocal"], "%Y-%m-%d %H:%M:%S"), need_sync)
 
     if len(sync_data) == 0:
 
@@ -138,6 +140,7 @@ def syncData(username, password, garmin_email = None, garmin_password = None):
                         "sport": (None, 3, None), #骑行
                         "upload_file_name": (rid+"_ACTIVITY.fit", fd.read(), 'application/octet-stream')
                     })
+                    print(result)
             else:
                 rid     = sync_item["RideId"]
                 rid     = str(rid)
